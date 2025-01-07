@@ -12,11 +12,7 @@ client = minio.Minio(
  
 )
 
-BUCKET_NAME = "mybucket"
-
-# Check if the bucket already exists
-if client.bucket_exists(BUCKET_NAME):
-    print("Bucket already exists")
-else:
-    client.make_bucket(BUCKET_NAME)
-    print("Bucket created successfully")
+# Get list of buckets
+buckets = client.list_buckets()
+# Print the amount of buckets
+print(len(buckets))
